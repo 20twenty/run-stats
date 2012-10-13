@@ -14,15 +14,15 @@
    //
    var t;
    function onDeviceReady() {
-      t = setInterval(runit,100);
+      //t = setInterval(runit,100);
+      navigator.accelerometer.watchAcceleration(onSuccessAccel, onErrorAccel);
+      navigator.geolocation.watchPosition(onSuccessGPS, onErrorGPS,{enableHighAccuracy: true });
    }
 
    var loopcnt=0;
    function runit() {
       loopcnt++;
-      navigator.accelerometer.getCurrentAcceleration(onSuccessAccel, onErrorAccel);
       if(loopcnt = 1) {
-         navigator.geolocation.getCurrentPosition(onSuccessGPS, onErrorGPS,{enableHighAccuracy: true });
          loopcnt = 0;
       }
    }
