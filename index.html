@@ -21,7 +21,7 @@
    function runit() {
       loopcnt++;
       navigator.accelerometer.getCurrentAcceleration(onSuccessAccel, onErrorAccel);
-      if(loopcnt = 100) {
+      if(loopcnt = 1) {
          navigator.geolocation.getCurrentPosition(onSuccessGPS, onErrorGPS,{enableHighAccuracy: true });
          loopcnt = 0;
       }
