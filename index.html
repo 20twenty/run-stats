@@ -1,8 +1,21 @@
 <html>
-<head></head>
+<head>
+<script>
+function onSuccess(acceleration) {
+    alert('Acceleration X: ' + acceleration.x + '\n' +
+          'Acceleration Y: ' + acceleration.y + '\n' +
+          'Acceleration Z: ' + acceleration.z + '\n' +
+          'Timestamp: '      + acceleration.timestamp + '\n');
+};
+
+function onError() {
+    alert('onError!');
+};
+</script>
+</head>
 <body>
 This is a test<br>
 <a href='http://www.google.com'>Google</a>
-<input type='submit' name='test'>
+<input type='button' value='test' onclick='navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);'>
 </body>
 </html>
