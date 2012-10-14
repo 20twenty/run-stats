@@ -37,7 +37,7 @@
       var dMag = sqrt(a.x * a.x + a.y * a.y + a.z * a.z) - prevMag;
       var dt = a.timestamp - prevTimestamp;
       if(prevTimestamp > 0) {
-         J2tot += pow(dMag/dt,2)*dt;
+         J2tot += Math.pow(dMag/dt,2)*dt;
          Ttot += dt;
       }
       prevMag = Mag;
@@ -45,12 +45,13 @@
       loopcnt++;
       if (loopcnt > 10) {
          updateA();
+         loopcnt = 0;
       }
    }
 
    function updateA() {
       var element = document.getElementById('acceleration');
-      element.innerHTML = 'RMS jerk = ' + sqrt(J2tot/Ttot) + '<br />';
+      element.innerHTML = 'RMS jerk = ' + Math.sqrt(J2tot/Ttot) + '<br />';
       if(0) {
       element.innerHTML = 'Acceleration X: '          + acceleration.x                + '<br />' +
                           'Acceleration Y: '          + acceleration.y                + '<br />' +
