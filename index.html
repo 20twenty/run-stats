@@ -51,13 +51,13 @@
       }
    }
 
-   function updateA(acceleration) {
+   function updateA(a) {
       var element = document.getElementById('acceleration');
       //element.innerHTML = 'RMS jerk = ' + Math.sqrt(J2tot/Ttot) + '<br />';
-      element.innerHTML = 'Acceleration X: '          + acceleration.x                + '<br />' +
-                          'Acceleration Y: '          + acceleration.y                + '<br />' +
-                          'Acceleration Z: '          + acceleration.z                + '<br />' +
-                          'Timestamp: '               + acceleration.timestamp        + '<br />';
+      element.innerHTML = 'Acceleration X: '          + a.x                + '<br />' +
+                          'Acceleration Y: '          + a.y                + '<br />' +
+                          'Acceleration Z: '          + a.z                + '<br />' +
+                          'Timestamp: '               + a.timestamp        + '<br />';
    }
 
    // onError: Failed to get the acceleration
