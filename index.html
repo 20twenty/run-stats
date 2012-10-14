@@ -14,7 +14,6 @@
    //
    var t;
    function onDeviceReady() {
-      t = setInterval(updateA,1000);
       navigator.accelerometer.watchAcceleration(onSuccessAccel, onErrorAccel, {frequency: 100});
       //navigator.geolocation.watchPosition(onSuccessGPS, onErrorGPS,{enableHighAccuracy: true });
    }
@@ -43,6 +42,10 @@
       }
       prevMag = Mag;
       prevTimestamp = a.timestamp;
+      loopcnt++;
+      if (loopcnt > 10) {
+         updateA();
+      }
    }
 
    function updateA() {
