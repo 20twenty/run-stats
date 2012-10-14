@@ -33,6 +33,7 @@
    var prevTimestamp = 0;
    var J2tot = 0;
    var Ttot = 0;
+
    function onSuccessAccel(a) {
       var dMag = sqrt(a.x * a.x + a.y * a.y + a.z * a.z) - prevMag;
       var dt = a.timestamp - prevTimestamp;
