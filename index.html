@@ -14,9 +14,9 @@
    //
    var t;
    function onDeviceReady() {
-      //t = setInterval(runit,100);
+      t = setInterval(updateA,1000);
       navigator.accelerometer.watchAcceleration(onSuccessAccel, onErrorAccel, {frequency: 10});
-      navigator.geolocation.watchPosition(onSuccessGPS, onErrorGPS,{enableHighAccuracy: true });
+      //navigator.geolocation.watchPosition(onSuccessGPS, onErrorGPS,{enableHighAccuracy: true });
    }
 
    var loopcnt=0;
@@ -29,12 +29,29 @@
 
    // onSuccess: Get a snapshot of the current acceleration
    //
-   function onSuccessAccel(acceleration) {
+   var prevMag = 0;
+   var prevTimestamp = 0;
+   var J2tot = 0;
+   var Ttot = 0;
+   function onSuccessAccel(a) {
+      var dMag = sqrt(a.x * a.x + a.y * a.y + a.z * a.z) - prevMag;
+      var dt = a.timestamp - prevTimestamp;
+      J2tot += pow(dMag/dt,2)*dt;
+      Ttot += dt;
+
+      prevMag = Mag;
+      prevTimestamp = a.timestamp;
+   }
+
+   function updateA() {
       var element = document.getElementById('acceleration');
+      element.innerHTML = 'RMS jerk = ' + sqrt(J2tot/Ttot) + '<br />';
+      if(0) {
       element.innerHTML = 'Acceleration X: '          + acceleration.x                + '<br />' +
                           'Acceleration Y: '          + acceleration.y                + '<br />' +
                           'Acceleration Z: '          + acceleration.z                + '<br />' +
                           'Timestamp: '               + acceleration.timestamp        + '<br />';
+      }
    }
 
    // onError: Failed to get the acceleration
