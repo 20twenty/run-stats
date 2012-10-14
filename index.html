@@ -14,7 +14,7 @@
    //
    var t;
    function onDeviceReady() {
-      navigator.accelerometer.watchAcceleration(onSuccessAccel, onErrorAccel, {frequency: 100});
+      navigator.accelerometer.watchAcceleration(onSuccessAccel, onErrorAccel, {frequency: 3000});
       //navigator.geolocation.watchPosition(onSuccessGPS, onErrorGPS,{enableHighAccuracy: true });
    }
 
@@ -33,7 +33,8 @@
    var J2tot = 0;
    var Ttot = 0;
 
-   function onSuccessAccel(a) {
+   function onSuccessAccel(acceleration) {
+      var a = acceleration;
       var dMag = sqrt(a.x * a.x + a.y * a.y + a.z * a.z) - prevMag;
       var dt = a.timestamp - prevTimestamp;
       alert('dMag = ' + dMag + '; dt = ' + dt);
@@ -44,7 +45,7 @@
       prevMag = Mag;
       prevTimestamp = a.timestamp;
       loopcnt++;
-      if (loopcnt > 10) {
+      if (loopcnt > 1) {
          updateA();
          loopcnt = 0;
       }
