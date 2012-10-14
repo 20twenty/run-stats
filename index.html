@@ -15,7 +15,7 @@
    var t;
    function onDeviceReady() {
       t = setInterval(updateA,1000);
-      navigator.accelerometer.watchAcceleration(onSuccessAccel, onErrorAccel, {frequency: 10});
+      navigator.accelerometer.watchAcceleration(onSuccessAccel, onErrorAccel, {frequency: 100});
       //navigator.geolocation.watchPosition(onSuccessGPS, onErrorGPS,{enableHighAccuracy: true });
    }
 
