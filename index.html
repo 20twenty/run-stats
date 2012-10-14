@@ -14,7 +14,7 @@
    //
    var t;
    function onDeviceReady() {
-      navigator.accelerometer.watchAcceleration(onSuccessAccel, onErrorAccel, {frequency: 3000});
+      navigator.accelerometer.watchAcceleration(updateA, onErrorAccel, {frequency: 3000});
       //navigator.geolocation.watchPosition(onSuccessGPS, onErrorGPS,{enableHighAccuracy: true });
    }
 
@@ -51,15 +51,13 @@
       }
    }
 
-   function updateA() {
+   function updateA(acceleration) {
       var element = document.getElementById('acceleration');
-      element.innerHTML = 'RMS jerk = ' + Math.sqrt(J2tot/Ttot) + '<br />';
-      if(0) {
+      //element.innerHTML = 'RMS jerk = ' + Math.sqrt(J2tot/Ttot) + '<br />';
       element.innerHTML = 'Acceleration X: '          + acceleration.x                + '<br />' +
                           'Acceleration Y: '          + acceleration.y                + '<br />' +
                           'Acceleration Z: '          + acceleration.z                + '<br />' +
                           'Timestamp: '               + acceleration.timestamp        + '<br />';
-      }
    }
 
    // onError: Failed to get the acceleration
