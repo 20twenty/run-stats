@@ -53,10 +53,12 @@
 
    function updateA(a) {
       var element = document.getElementById('acceleration');
+      var Mag = a.x * a.x + a.y * a.y + a.z * a.z;
       //element.innerHTML = 'RMS jerk = ' + Math.sqrt(J2tot/Ttot) + '<br />';
       element.innerHTML = 'Acceleration X: '          + a.x                + '<br />' +
                           'Acceleration Y: '          + a.y                + '<br />' +
                           'Acceleration Z: '          + a.z                + '<br />' +
+                          'Magnituide2   : '          + Mag                + '<br />' +
                           'Timestamp: '               + a.timestamp        + '<br />';
    }
 
