@@ -36,8 +36,9 @@
    function onSuccessAccel(a) {
       var dMag = sqrt(a.x * a.x + a.y * a.y + a.z * a.z) - prevMag;
       var dt = a.timestamp - prevTimestamp;
+      alert('dMag = ' + dMag + '; dt = ' + dt);
       if(prevTimestamp > 0) {
-         J2tot += Math.pow(dMag/dt,2)*dt;
+         J2tot += Math.pow(dMag/dt,2) * dt;
          Ttot += dt;
       }
       prevMag = Mag;
